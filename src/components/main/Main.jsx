@@ -1,19 +1,22 @@
-import "./styles/main.css"
+import "./styles/main.css";
 import SideBar from "../sideBar/SideBar";
 import SliderSidebar from "../../pages/home/components/slider.sidebar/SliderSidebar";
+import Banners from "../../pages/home/components/banners/Banners";
 
 const Main = () => {
   return (
     <section className="container-main">
       <section className=" aside">
-        <SideBar/>
+        <SideBar />
       </section>
 
-      <section className="bg-fuchsia-700 slider">
-        <SliderSidebar/>
+      <section className="slider">
+        <SliderSidebar />
       </section>
 
-      <section className="bg-red-400 banner">banner</section>
+      <section className=" banner">
+        <Banners />
+      </section>
     </section>
   );
 };

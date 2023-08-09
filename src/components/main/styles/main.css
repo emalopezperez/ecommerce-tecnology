@@ -1,5 +1,4 @@
 .container-main{
-  background-color: antiquewhite;
   width: 90%;
   height: 60%;
   display: flex;
@@ -13,7 +12,7 @@
 }
 
 .container-main .slider{
-  width: 50%
+  width: 60%
 }
 
 .container-main .banner{

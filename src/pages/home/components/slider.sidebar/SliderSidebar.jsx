@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./sliderSidebar.css";
 import { RxDotFilled } from "react-icons/rx";
 
@@ -21,13 +21,30 @@ const SliderSidebar = () => {
     setCurrentIndex(slideIndex);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      setCurrentIndex(nextIndex);
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [currentIndex]);
+
   return (
     <div className="max-w-[1400px] h-full w-full m-auto  relative group">
-      <div
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className="w-full h-full duration-500 bg-center bg-cover "></div>
+      {slides.map((slide, slideIndex) => (
+        <div
+          key={slideIndex}
+          style={{
+            backgroundImage: `url(${slide.url})`,
+            opacity: currentIndex === slideIndex ? 1 : 0,
+          }}
+          className="absolute w-full h-full duration-1000 bg-center bg-cover"></div>
+      ))}
 
-      <div className="absolute z-20 flex items-center justify-center py-2 transform -translate-x-1/2 bottom-6 left-1/2">
+      <div className="absolute flex items-center justify-center py-2 transform -translate-x-1/2 bottom-6 left-1/2">
         {slides.map((slide, slideIndex) => (
           <div
             key={slideIndex}
@@ -38,12 +55,14 @@ const SliderSidebar = () => {
         ))}
       </div>
 
-      <div className="absolute top-[25%] flex flex-col justify-between  sm:w-[250px] h-[200px] left-0 sm:left-10 z-30">
+      <div className="absolute top-[25%] flex flex-col justify-between sm:w-[250px] h-[190px] md:h-[190px] left-0 sm:left-5 ">
         <p className="text-2xl">
           Promoción 20% de descuento en tu primera orden
         </p>
 
-        <button>Ver más</button>
+        <button className="w-[50%] bg-[#f97316] flex justify-center p-2">
+          <span>Ver mas</span>
+        </button>
       </div>
     </div>
   );
