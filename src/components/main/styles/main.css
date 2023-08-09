@@ -1,0 +1,21 @@
+.container-main{
+  background-color: antiquewhite;
+  width: 90%;
+  height: 60%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+
+.container-main .aside{
+  width: 20%;
+}
+
+.container-main .slider{
+  width: 50%
+}
+
+.container-main .banner{
+  width: 20%;
+}

@@ -1,9 +1,12 @@
-
+import LayoutContainer from "../../components/layout/LayoutContainer";
+import Main from "../../components/main/Main";
 
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <LayoutContainer>
+      <Main />
+    </LayoutContainer>
+  );
+};
 
-export default Home
+export default Home;
