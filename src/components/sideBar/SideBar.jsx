@@ -3,7 +3,7 @@ import "./styles/sideBar.css";
 const SideBar = () => {
   return (
     <aside className="container-sidebar">
-      <header>
+      <header className="">
         <h2 className="title-category">Categorias</h2>
       </header>
 

@@ -11,9 +11,9 @@ const Banners = () => {
         <div className="info-banner">
           <h3>Descuento 20% en comporas </h3>
 
-          <p>
+          <button>
             <span>Ver mas</span>
-          </p>
+          </button>
         </div>
       </div>
       <div className="">
@@ -25,9 +25,9 @@ const Banners = () => {
         <div className="info-banner">
           <h3>Descuento 20% en comporas </h3>
 
-          <p>
+          <button className="">
             <span>Ver mas</span>
-          </p>
+          </button>
         </div>
       </div>
     </section>

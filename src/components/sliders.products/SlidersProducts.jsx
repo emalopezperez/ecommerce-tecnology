@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from "react";
 import "./styles/sliderProducts.css";
 import Slider from "react-slick";
 
@@ -8,7 +7,7 @@ const settings = {
   speed: 500,
   slidesToShow: 6,
   slidesToScroll: 1,
-  
+
   responsive: [
     {
       breakpoint: 1024,
@@ -80,18 +79,18 @@ const SlidersProducts = () => {
 
   return (
     <div className="container-sliders-products">
-      <div className="h-[30%]">
-        <h3 className="text-xl text-black">Ultimos productos</h3>
+      <div className="h-[15%]">
+        <h3 className="text-xl text-black">Últimos productos</h3>
       </div>
-      <div className="flex flex-col items-center no-scrollbar ">
-        <Slider className="w-full pb-4" {...settings}>
+      <div className="flex flex-col items-center no-scrollbar">
+        <Slider className="w-full pb-6" {...settings}>
           {slides.map((product, index) => (
             <div
               key={index}
-              className={`flex flex-col items-center  ${
+              className={`flex flex-col items-center ${
                 index === 0 ? "pl-0" : ""
               }`}>
-              <div className="cursor-pointer hover:none">
+              <div className="cursor-pointer">
                 <img
                   src={product.imageUrl}
                   alt={product.name}

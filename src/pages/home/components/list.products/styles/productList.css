@@ -1,0 +1,11 @@
+.container-products {
+  width: 90%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.list-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
