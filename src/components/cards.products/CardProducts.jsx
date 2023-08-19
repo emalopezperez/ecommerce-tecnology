@@ -3,13 +3,13 @@ import { AiFillStar } from "react-icons/ai";
 
 const CardProducts = () => {
   return (
-    <div className="product-card">
+    <div className="product-card max-w-full md:max-w-[250px]">
       <img
         src="https://http2.mlstatic.com/D_NQ_NP_657898-MLA46180356973_052021-O.webp"
         alt=""
       />
       <div className="product-card-info">
-        <h3>Apple AirPods Pro - Blanco</h3>
+        <h3 className="">Apple AirPods Pro </h3>
 
         <div>
           <span className="starts">

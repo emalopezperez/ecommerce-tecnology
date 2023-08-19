@@ -2,182 +2,166 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Aquí definimos las Custom properties */
+/*=============== VARIABLES CSS ===============*/
 :root {
-  --negro: #393939;
-  /* Tipografía */
-  --tipo-principal: Helvetica, Arial, sans-serif;
-  --tipo-secundaria: Verdana;
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  --hue-color: 190;
+
+  /* HSL color mode */
+  --first-color: #fafeff;
+  --first-color-second: hsl(var(--hue-color), 64%, 22%);
+  --first-color-alt: hsl(var(--hue-color), 64%, 15%);
+  --title-color: hsl(var(--hue-color), 64%, 18%);
+  --text-color: hsl(var(--hue-color), 24%, 35%);
+  --text-color-light: hsl(var(--hue-color), 8%, 60%);
+  --input-color: hsl(var(--hue-color), 24%, 97%);
+  --body-color: hsl(var(--hue-color), 100%, 99%);
+  --white-color: #fff;
+  --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+  --scroll-thumb-color: hsl(var(--hue-color), 12%, 75%);
+
+  /*========== Font and typography ==========*/
+  --body-font: "Open Sans", sans-serif;
+  --title-font: "Raleway", sans-serif;
+  --biggest-font-size: 2.5rem;
+  --h1-font-size: 2.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margenes Bottom ==========*/
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-25: 1.25rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+
+  /*========== Hover overlay ==========*/
+  --img-transition: 0.3s;
+  --img-hidden: hidden;
+  --img-scale: scale(1.1);
 }
 
-/* Las adaptamos al modo oscuro */
-@media (prefers-color-scheme: dark) {
+@media screen and (min-width: 968px) {
   :root {
-    --negro: #ececec;
+    --biggest-font-size: 4rem;
+    --h1-font-size: 3.25rem;
+    --h2-font-size: 1.75rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
   }
 }
-/* Opcional */
-/* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
-/* Opcional */
-/* Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    -webkit-animation: none !important;
-    animation: none !important;
-    -webkit-transition: none !important;
-    transition: none !important;
-  }
-}
-/* Reseteamos los margin y paddings de todas las etiquetas */
+
+/*=============== BASE ===============*/
+
 * {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  vertical-align: baseline;
+  padding: 0;
+  margin: 0;
 }
 
-/* Evitamos problemas con las imagenes */
-img,
-picture,
-video,
-iframe,
-figure {
-  max-width: 100%;
-  width: 100%;
-  display: block;
-  /* opcional */
-  -o-object-fit: cover;
-  object-fit: cover;
-  /* opcional */
-  -o-object-position: center center;
-  object-position: center center;
-}
-
-/* Reseteamos los enlaces para funcionar como cajas... */
-a {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  font-size: inherit;
-}
-
-/* ... excepto los que se encuentran en párrafos */
-p a {
-  display: inline;
-}
-
-/* Quitamos los puntos de los <li> */
-li {
-  list-style-type: none;
-}
-
-/* Configuramos anclas suaves */
 html {
   scroll-behavior: smooth;
 }
 
-/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
 h1,
 h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-a,
-strong,
-blockquote,
-i,
-b,
-u,
-em {
-  font-size: 1em;
-  font-weight: inherit;
-  font-style: inherit;
+h3 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  font-family: var(--title-font);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
   text-decoration: none;
-  color: inherit;
 }
 
-/* Evitamos problemas con los pseudoelementos de quotes */
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
+img,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
-/* Configuramos el texto que seleccionamos */
-::-moz-selection {
-  background-color: var(--negro);
-  color: var(--blanco);
-}
-::selection {
-  background-color: var(--negro);
-  color: var(--blanco);
-}
-
-/* Nivelamos problemas de tipografías y colocación de formularios */
-form,
-input,
-textarea,
-select,
 button,
-label {
-  font-family: inherit;
-  font-size: inherit;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
-  background-color: transparent;
-  color: inherit;
-  display: block;
-  /* opcional */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+input {
+  border: none;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
 }
 
-/* Reseteamos las tablas */
-table,
-tr,
-td {
-  border-collapse: collapse;
-  border-spacing: 0;
+button {
+  cursor: pointer;
 }
 
-/* Evitamos problemas con los SVG */
-svg {
-  width: 100%;
-  display: block;
-  fill: currentColor;
+input {
+  outline: none;
 }
 
-/* (Probándolo, no usar en producción) En el caso de añadir una  */
-/* p svg{
-  display: inline;
-  width: initial;
-} */
-/* Configuramos la tipografía para toda la web */
-body {
-  min-height: 100vh;
-  font-size: 100%;
-  font-family: var(--tipo-principal);
-  color: var(--negro);
-  background-color: #f2f2f2;
-  /* opcional */
-  line-height: 1.4em;
-  /* opcional */
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
-  /* opcional */
-  font-smooth: always;
-  /* opcional */
-  -webkit-font-smoothing: antialiased;
-  /* opcional */
-  -moz-osx-font-smoothing: grayscale;
+.main {
+  overflow-x: hidden;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+  padding: 4.5rem 0 2.5rem;
+}
+
+.section__title {
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+  text-align: center;
+  text-transform: capitalize;
+  margin-bottom: var(--mb-2);
+}
+
+.container {
+  max-width: 90%;
+  margin-left: var(--mb-1);
+  margin-right: var(--mb-1);
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
 }

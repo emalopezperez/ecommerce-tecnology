@@ -1,0 +1,15 @@
+.container-main {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.container-main .slider {
+  width: 80%;
+}
+
+.container-main .banner {
+  width: 20%;
+}

@@ -1,11 +1,12 @@
 import "./styles/sliderProducts.css";
 import Slider from "react-slick";
+import CardProducts from "../cards.products/CardProducts";
 
 const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 6,
+  slidesToShow: 5,
   slidesToScroll: 1,
 
   responsive: [
@@ -78,26 +79,16 @@ const SlidersProducts = () => {
   ];
 
   return (
-    <div className="container-sliders-products">
-      <div className="h-[15%]">
-        <h3 className="text-xl text-black">Últimos productos</h3>
+    <div className="container-sliders-products h-[500px] mt-10">
+      <div className="h-[80px]">
+        <h3 className="text-2xl font-bold tracking-tight text-gray-900 ">
+          Productos mas vendidos
+        </h3>
       </div>
       <div className="flex flex-col items-center no-scrollbar">
-        <Slider className="w-full pb-6" {...settings}>
+        <Slider className="w-full pb-11" {...settings}>
           {slides.map((product, index) => (
-            <div
-              key={index}
-              className={`flex flex-col items-center ${
-                index === 0 ? "pl-0" : ""
-              }`}>
-              <div className="cursor-pointer">
-                <img
-                  src={product.imageUrl}
-                  alt={product.name}
-                  className="max-w-[215px] object-cover"
-                />
-              </div>
-            </div>
+            <CardProducts />
           ))}
         </Slider>
       </div>
