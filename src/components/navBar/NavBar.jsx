@@ -1,5 +1,6 @@
 import "./styles/navBar.css";
 import { Fragment, useState } from "react";
+import Cart from "../cart/Cart";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -211,9 +212,10 @@ function classNames(...classes) {
 
 function NavBar() {
   const [open, setOpen] = useState(false);
+  const [openCart, setopenCart] = useState(false);
 
   return (
-    <div className="bg-white fixed top-0 w-full z-50">
+    <div className="bg-white fixed top-0 w-full z-10">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
@@ -502,7 +504,7 @@ function NavBar() {
 
               {/* Logo */}
               <a href="#" className="flex">
-                <h1 className="text-xl">Company</h1>
+                <h1 className="text-xl text-bold">Company</h1>
               </a>
 
               <div className="flex flex-1 items-center justify-end">
@@ -530,7 +532,9 @@ function NavBar() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 flex items-center p-2">
+                  <button
+                    onClick={() => setopenCart(true)}
+                    className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-[#44686f]"
                       aria-hidden="true"
@@ -539,13 +543,15 @@ function NavBar() {
                       0
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </nav>
       </header>
+
+      <Cart openCart={openCart} setopenCart={setopenCart} />
     </div>
   );
 }

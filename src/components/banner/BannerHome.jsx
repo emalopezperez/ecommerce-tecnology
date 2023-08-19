@@ -105,7 +105,7 @@ const septimo = [
     alt: "Hero image",
   },
   {
-    url: "https://images.unsplash.com/photo-1599330293364-622fa6bfcf3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+    url: "https://images.unsplash.com/photo-1503342394128-c104d54dba01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
     alt: "Hero image",
   },
 ];
@@ -135,7 +135,8 @@ function bannerHome() {
         <div className="relative mx-auto max-w-[90%] sm:static ">
           <div className="sm:max-w-lg">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Summer styles are finally here
+              <span className="text-orange-600">Summer </span>
+              styles are finally here
             </h1>
             <p className="mt-4 text-xl text-gray-500">
               This year, our new summer collection will shelter you from the
