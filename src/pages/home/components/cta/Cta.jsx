@@ -1,6 +1,6 @@
 function Cta() {
   return (
-    <div className="bg-gray-50 w-full">
+    <div className="bg-gray-50 w-full pt-10 pb-10">
       <div className="mx-auto max-w-[90%] ">
         {/* Details section */}
         <section aria-labelledby="details-heading">

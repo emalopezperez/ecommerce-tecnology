@@ -200,8 +200,8 @@ const navigation = {
     },
   ],
   pages: [
-    { name: "Company", href: "#" },
-    { name: "Stores", href: "#" },
+    { name: "Company", href: "/" },
+    { name: "Stores", href: "/store" },
   ],
 };
 
@@ -373,14 +373,14 @@ function NavBar() {
                             <Popover.Button
                               className={classNames(
                                 open
-                                  ? "text-indigo-600"
+                                  ? "#44686f"
                                   : "text-gray-700 hover:text-gray-800",
                                 "relative z-10 flex items-center justify-center text-sm font-medium transition-colors duration-200 ease-out"
                               )}>
                               {category.name}
                               <span
                                 className={classNames(
-                                  open ? "bg-indigo-600" : "",
+                                  open ? "bg-[#44686f]" : "",
                                   "absolute inset-x-0 bottom-0 h-0.5 transition-colors duration-200 ease-out sm:mt-5 sm:translate-y-px sm:transform"
                                 )}
                                 aria-hidden="true"
@@ -502,7 +502,7 @@ function NavBar() {
 
               {/* Logo */}
               <a href="#" className="flex">
-                <h1 className="tx-4xl">Company</h1>
+                <h1 className="text-xl">Company</h1>
               </a>
 
               <div className="flex flex-1 items-center justify-end">
@@ -511,7 +511,10 @@ function NavBar() {
                   href="#"
                   className="ml-6 hidden p-2 text-gray-400 hover:text-gray-500 lg:block">
                   <span className="sr-only">Search</span>
-                  <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
+                  <MagnifyingGlassIcon
+                    className="h-6 w-6 text-[#44686f]"
+                    aria-hidden="true"
+                  />
                 </a>
 
                 {/* Account */}
@@ -519,17 +522,20 @@ function NavBar() {
                   href="#"
                   className="p-2 text-gray-400 hover:text-gray-500 lg:ml-4">
                   <span className="sr-only">Account</span>
-                  <UserIcon className="h-6 w-6" aria-hidden="true" />
+                  <UserIcon
+                    className="h-6 w-6 text-[#44686f]"
+                    aria-hidden="true"
+                  />
                 </a>
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
                   <a href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
-                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      className="h-6 w-6 flex-shrink-0 text-[#44686f]"
                       aria-hidden="true"
                     />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                    <span className="ml-2 text-sm font-medium text-[#44686f]">
                       0
                     </span>
                     <span className="sr-only">items in cart, view bag</span>

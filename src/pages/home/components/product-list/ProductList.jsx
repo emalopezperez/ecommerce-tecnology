@@ -52,20 +52,14 @@ const products = [
   },
 ];
 
-function ProductList() {
+function ProductList({title}) {
   return (
-    <div className="bg-white w-full mt-24 mb-24">
-      <div className="mx-auto max-w-2xl py-16sm:py-24 lg:max-w-[90%] ">
+    <div className="w-full max-h-[700px] h-[100%] flex flex-col items-center justify-center ">
+      <div className="mx-auto  max-w-[90%] w-full ">
         <div className="md:flex md:items-center md:justify-between">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            Trending products
+            {title}
           </h2>
-          <a
-            href="#"
-            className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 md:block">
-            Shop the collection
-            <span aria-hidden="true"> &rarr;</span>
-          </a>
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
@@ -90,15 +84,6 @@ function ProductList() {
               </p>
             </div>
           ))}
-        </div>
-
-        <div className="mt-8 text-sm md:hidden">
-          <a
-            href="#"
-            className="font-medium text-indigo-600 hover:text-indigo-500">
-            Shop the collection
-            <span aria-hidden="true"> &rarr;</span>
-          </a>
         </div>
       </div>
     </div>

@@ -3,11 +3,13 @@ import Slider from "react-slick";
 import CardProducts from "../cards.products/CardProducts";
 
 const settings = {
-  dots: true,
   infinite: true,
   speed: 500,
   slidesToShow: 5,
   slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 1600,
+  pauseOnHover: true,
 
   responsive: [
     {
@@ -79,18 +81,18 @@ const SlidersProducts = () => {
   ];
 
   return (
-    <div className="container-sliders-products h-[500px] mt-10">
-      <div className="h-[80px]">
-        <h3 className="text-2xl font-bold tracking-tight text-gray-900 ">
-          Productos mas vendidos
+    <div className="w-full flex justify-center items-center h-[600px] ">
+      <div className="max-w-[90%] mx-auto">
+        <h3 className="text-2xl font-bold tracking-tight text-gray-900 mb-12">
+          Productos más vendidos
         </h3>
-      </div>
-      <div className="flex flex-col items-center no-scrollbar">
-        <Slider className="w-full pb-11" {...settings}>
-          {slides.map((product, index) => (
-            <CardProducts />
-          ))}
-        </Slider>
+        <div className="flex justify-center w-full">
+          <Slider className="md:max-w-[100%] max-w-[78%] pb-12" {...settings}>
+            {slides.map((product, index) => (
+              <CardProducts key={index} />
+            ))}
+          </Slider>
+        </div>
       </div>
     </div>
   );
