@@ -152,29 +152,29 @@ function bannerHome() {
                   <div className="flex items-center space-x-6 lg:space-x-8">
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 overflow-hidden rounded-lg w-44 sm:opacity-0 lg:opacity-100">
-                        <Slider slides={shuffleArray(cuarto)} time={4000} />
+                        <Slider slides={shuffleArray(cuarto)} time={5000} />
                       </div>
                       <div className="h-64 overflow-hidden rounded-lg w-44">
-                        <Slider slides={shuffleArray(otro)} time={4500} />
-                      </div>
-                    </div>
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 overflow-hidden rounded-lg w-44">
-                        <Slider slides={shuffleArray(quinto)} time={5800} />
-                      </div>
-                      <div className="h-64 overflow-hidden rounded-lg w-44">
-                        <Slider slides={shuffleArray(slides)} time={6000} />
-                      </div>
-                      <div className="h-64 overflow-hidden rounded-lg w-44">
-                        <Slider slides={shuffleArray(septimo)} time={6500} />
+                        <Slider slides={shuffleArray(otro)} time={5500} />
                       </div>
                     </div>
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 overflow-hidden rounded-lg w-44">
-                        <Slider slides={shuffleArray(tercero)} time={7000} />
+                        <Slider slides={shuffleArray(quinto)} time={6800} />
                       </div>
                       <div className="h-64 overflow-hidden rounded-lg w-44">
-                        <Slider slides={shuffleArray(sexto)} time={7500} />
+                        <Slider slides={shuffleArray(slides)} time={7000} />
+                      </div>
+                      <div className="h-64 overflow-hidden rounded-lg w-44">
+                        <Slider slides={shuffleArray(septimo)} time={7500} />
+                      </div>
+                    </div>
+                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                      <div className="h-64 overflow-hidden rounded-lg w-44">
+                        <Slider slides={shuffleArray(tercero)} time={8000} />
+                      </div>
+                      <div className="h-64 overflow-hidden rounded-lg w-44">
+                        <Slider slides={shuffleArray(sexto)} time={8500} />
                       </div>
                     </div>
                   </div>

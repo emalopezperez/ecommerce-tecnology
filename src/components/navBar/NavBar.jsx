@@ -259,9 +259,8 @@ function NavBar() {
                           key={category.name}
                           className={({ selected }) =>
                             classNames(
-                              selected
-                                ? "border-indigo-600 text-indigo-600"
-                                : "border-transparent text-gray-900",
+                              selected,
+                              "border-transparent text-gray-900",
                               "flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium"
                             )
                           }>
@@ -399,7 +398,6 @@ function NavBar() {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0">
                             <Popover.Panel className="absolute inset-x-0 top-full">
-                              {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                               <div
                                 className="absolute inset-0 top-1/2 bg-white shadow"
                                 aria-hidden="true"

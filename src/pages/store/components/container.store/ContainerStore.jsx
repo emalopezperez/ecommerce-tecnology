@@ -1,5 +1,7 @@
 import "./styles/container.css";
 import { Fragment, useState } from "react";
+import ListProducts from "../list.products/ListProducts";
+import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -113,7 +115,7 @@ const ContainerStore = () => {
                     </div>
 
                     {/* Filters */}
-                    <form className="mt-4 border-t border-gray-200">
+                    <form className="mt-4 border-t border-gray-200 ">
                       <h3 className="sr-only">Categories</h3>
                       <ul
                         role="list"
@@ -189,8 +191,8 @@ const ContainerStore = () => {
           </Transition.Root>
 
           <main className="mx-auto max-w-[90%] w-full">
-            <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 w-full">
-              <div className="flex items-center">
+            <div className="flex  justify-between border-b border-gray-200 pb-4 pt-4 w-full items-center">
+              <div className="flex items-center w-[20%] md:w-[45%] ">
                 <Menu as="div" className="relative inline-block text-left ">
                   <Transition
                     as={Fragment}
@@ -238,6 +240,9 @@ const ContainerStore = () => {
                   <FunnelIcon className="h-5 w-5" aria-hidden="true" />
                 </button>
               </div>
+              <div className="w-[65%] md:w-[55%]">
+                <Breadcrumb />
+              </div>
             </div>
 
             <section
@@ -249,7 +254,7 @@ const ContainerStore = () => {
 
               <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4 ">
                 {/* Filters */}
-                <form className="hidden lg:block">
+                <form className="hidden lg:block ">
                   <h3 className="sr-only">Categories</h3>
                   <ul
                     role="list"
@@ -281,7 +286,7 @@ const ContainerStore = () => {
                                   />
                                 ) : (
                                   <PlusIcon
-                                    className="h-5 w-5"
+                                    className="h-5 w-5 "
                                     aria-hidden="true"
                                   />
                                 )}
@@ -319,7 +324,7 @@ const ContainerStore = () => {
 
                 {/* Product grid */}
                 <div className="lg:col-span-3  w-full h-[100vh]">
-                  productos
+                  <ListProducts />
                 </div>
               </div>
             </section>
