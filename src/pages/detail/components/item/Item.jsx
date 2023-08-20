@@ -92,8 +92,8 @@ function Item() {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
 
   return (
-    <div className="bg-white w-full mb-10">
-      <div className="mx-auto max-w-2xl  py-16  sm:py-24 lg:max-w-[90%] ">
+    <div className="bg-white w-full ">
+      <div className="mx-auto max-w-2xl  pt-16 pb-5   lg:max-w-[90%]  ">
         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
           {/* Image gallery */}
           <Tab.Group as="div" className="flex flex-col-reverse">
