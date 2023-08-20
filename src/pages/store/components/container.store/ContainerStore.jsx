@@ -71,7 +71,7 @@ const ContainerStore = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   return (
-    <main className="container-store ">
+    <main className="container-store mb-40">
       <div className="bg-white w-full h-full">
         <div>
           {/* Mobile filter dialog */}

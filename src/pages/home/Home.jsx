@@ -31,13 +31,9 @@ const Home = () => {
         <ProductList title={"Nuevos ingresos"} />
         <Cta />
         <SlidersProducts />
-        <LogoClouds />
-
-        <section>
-          <Incentive />
-          <Footer />
-        </section>
       </main>
+      <LogoClouds />
+      <Incentive />
     </LayoutContainer>
   );
 };
