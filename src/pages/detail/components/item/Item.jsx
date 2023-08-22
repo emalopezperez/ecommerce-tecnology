@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "../../../../redux/states/cart/cartSlice";
 import { Disclosure, RadioGroup, Tab } from "@headlessui/react";
 import { StarIcon } from "@heroicons/react/20/solid";
-import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const product = {
   name: "Zip Tote Basket",
   price: "$140",
+  cantidad: 0,
   rating: 4,
+  id: 1,
   images: [
     {
       id: 1,
@@ -26,7 +30,6 @@ const product = {
       src: "https://tailwindui.com/img/ecommerce-images/product-page-03-product-02.jpg",
       alt: "Angled front view with bag zipped and handles upright.",
     },
-    // More images...
   ],
   colors: [
     {
@@ -34,6 +37,7 @@ const product = {
       bgColor: "bg-gray-700",
       selectedColor: "ring-gray-700",
     },
+
     { name: "White", bgColor: "bg-white", selectedColor: "ring-gray-400" },
     {
       name: "Washed Gray",
@@ -81,7 +85,6 @@ const product = {
         "Water-resistant",
       ],
     },
-    // More sections...
   ],
 };
 
@@ -90,6 +93,20 @@ function classNames(...classes) {
 }
 function Item() {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const dispatch = useDispatch();
+
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+
+  const handleAddProduct = (productId) => {
+    product.cantidad = selectedQuantity;
+
+    dispatch(addProductToCart(productId));
+  };
+
+  const handleQuantityChange = (event) => {
+    const newValue = parseInt(event.target.value, 10);
+    setSelectedQuantity(newValue);
+  };
 
   return (
     <div className="bg-white w-full ">
@@ -116,7 +133,7 @@ function Item() {
                         </span>
                         <span
                           className={classNames(
-                            selected ? "ring-indigo-500" : "ring-transparent",
+                            selected ? "ring-black" : "ring-transparent",
                             "pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2"
                           )}
                           aria-hidden="true"
@@ -185,63 +202,68 @@ function Item() {
               />
             </div>
 
-            <form className="mt-6">
-              {/* Colors */}
-              <div>
-                <h3 className="text-sm text-gray-600">Color</h3>
+            <form className="mt-6 ">
+              <h3 className="text-sm text-gray-600">Color</h3>
 
-                <RadioGroup
-                  value={selectedColor}
-                  onChange={setSelectedColor}
-                  className="mt-2">
-                  <RadioGroup.Label className="sr-only">
-                    Choose a color
-                  </RadioGroup.Label>
-                  <span className="flex items-center space-x-3">
-                    {product.colors.map((color) => (
-                      <RadioGroup.Option
-                        key={color.name}
-                        value={color}
-                        className={({ active, checked }) =>
-                          classNames(
-                            color.selectedColor,
-                            active && checked ? "ring ring-offset-1" : "",
-                            !active && checked ? "ring-2" : "",
-                            "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
-                          )
-                        }>
-                        <RadioGroup.Label as="span" className="sr-only">
-                          {color.name}
-                        </RadioGroup.Label>
-                        <span
-                          aria-hidden="true"
-                          className={classNames(
-                            color.bgColor,
-                            "h-8 w-8 rounded-full border border-black border-opacity-10"
-                          )}
-                        />
-                      </RadioGroup.Option>
-                    ))}
-                  </span>
-                </RadioGroup>
-              </div>
+              <RadioGroup
+                value={selectedColor}
+                onChange={setSelectedColor}
+                className="mt-2">
+                <RadioGroup.Label className="sr-only">
+                  Choose a color
+                </RadioGroup.Label>
+                <span className="flex items-center space-x-3">
+                  {product.colors.map((color) => (
+                    <RadioGroup.Option
+                      key={color.name}
+                      value={color}
+                      className={({ active, checked }) =>
+                        classNames(
+                          color.selectedColor,
+                          active && checked ? "ring ring-offset-1" : "",
+                          !active && checked ? "ring-2" : "",
+                          "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
+                        )
+                      }>
+                      <RadioGroup.Label as="span" className="sr-only">
+                        {color.name}
+                      </RadioGroup.Label>
+                      <span
+                        aria-hidden="true"
+                        className={classNames(
+                          color.bgColor,
+                          "h-8 w-8 rounded-full border border-black border-opacity-10"
+                        )}
+                      />
+                    </RadioGroup.Option>
+                  ))}
+                </span>
+              </RadioGroup>
 
-              <div className="mt-10 flex">
+              <div className="mt-10 flex gap-3 items-center">
                 <button
-                  type="submit"
-                  className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-[#44686f] px-8 py-3 text-base font-medium text-white hover:bg-black focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">
-                  Add to bag
-                </button>
-
-                <button
+                  onClick={() => handleAddProduct(product)}
                   type="button"
-                  className="ml-4 flex items-center justify-center rounded-md px-3 py-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500">
-                  <HeartIcon
-                    className="h-6 w-6 flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">Add to favorites</span>
+                  className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-[#44686f] px-8 py-3 text-base font-medium text-white hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">
+                  Agregar al carrito
                 </button>
+
+                <div className=" ">
+                  <label className="sr-only">Quantity</label>
+                  <select
+                    value={selectedQuantity}
+                    onChange={handleQuantityChange}
+                    className="cursor-pointer max-w-full rounded-md border border-gray-600 py-3 px-1 text-left text-base font-medium leading-5 text-gray-700 shadow-sm  focus:outline-none focus:ring-1 sm:text-sm bg-white ">
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                    <option value={6}>6</option>
+                    <option value={7}>7</option>
+                    <option value={8}>8</option>
+                  </select>
+                </div>
               </div>
             </form>
 
@@ -267,7 +289,7 @@ function Item() {
                             <span className="ml-6 flex items-center">
                               {open ? (
                                 <MinusIcon
-                                  className="block h-6 w-6 text-indigo-400 group-hover:text-indigo-500"
+                                  className="block h-6 w-6 "
                                   aria-hidden="true"
                                 />
                               ) : (

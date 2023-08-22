@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -41,7 +42,13 @@ const products = [
   },
 ];
 
+// eslint-disable-next-line react/prop-types
 function Cart({ openCart, setopenCart }) {
+  const dispatch = useDispatch();
+  const { productsList, totalCount } = useSelector((state) => state.cart);
+  const cartTotalCount = localStorage.getItem("cartTotalCount");
+  const cart = localStorage.getItem("cartState");
+
   return (
     <Transition.Root show={openCart} as={Fragment}>
       <Dialog

@@ -1,5 +1,6 @@
 import { StarIcon } from "@heroicons/react/20/solid";
 
+
 const products = [
   {
     id: 1,
