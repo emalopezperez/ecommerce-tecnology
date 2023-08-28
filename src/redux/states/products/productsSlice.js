@@ -43,24 +43,18 @@ export const getProductsLimit = createAsyncThunk(
   }
 );
 
-export const filterProductsId = createAsyncThunk(
-  'products/fetchProducts',
-  async (values, { rejectWithValue }) => {
+export const getItem = createAsyncThunk(
+  'products/fetchProductById',
+  async (id, { rejectWithValue }) => {
     try {
-      let url = 'https://fakestoreapi.com/products/1'
+      let url = `https://fakestoreapi.com/products/${id}`; 
       const response = await axios.get(url);
-
       return response.data;
     } catch (error) {
-      if (error.response) {
-        return rejectWithValue(error.response.data);
-      } else {
-        return rejectWithValue(error.response.data);
-      }
+      return rejectWithValue(error.response.data);
     }
   }
 );
-
 
 export const filterProductsCategory = createAsyncThunk(
   'products/fetchProducts',
@@ -80,8 +74,6 @@ export const filterProductsCategory = createAsyncThunk(
   }
 );
 
-
-
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -99,6 +91,18 @@ export const productsSlice = createSlice({
         state.products = action.payload;
       })
       .addCase(getProducts.rejected, (state, action) => {
+        state.productsStatus = 'rejected';
+        state.productsError = action.error.message;
+      })
+      .addCase(getItem.pending, (state) => {
+        state.productsStatus = 'pending';
+        state.productsError = '';
+      })
+      .addCase(getItem.fulfilled, (state, action) => {
+        state.productsStatus = 'success';
+        state.products = action.payload;
+      })
+      .addCase(getItem.rejected, (state, action) => {
         state.productsStatus = 'rejected';
         state.productsError = action.error.message;
       });

@@ -7,7 +7,7 @@ const CardProducts = ({ product }) => {
   const { name, price, rating, imageSrc, id, reviewCount } = product;
 
   return (
-    <div key={id} className="product-card max-w-full md:max-w-[250px]">
+    <div key={id} className="product-card max-w-full md:max-w-[230px]">
       <img src={imageSrc} alt="img/cardProduct" />
       <div className="product-card-info">
         <h3 className="">{name}</h3>

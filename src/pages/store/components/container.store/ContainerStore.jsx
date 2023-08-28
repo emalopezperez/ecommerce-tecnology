@@ -1,5 +1,7 @@
 import "./styles/container.css";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getProductsLimit } from "../../../../redux/states/products/productsSlice";
 import ListProducts from "../list.products/ListProducts";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
@@ -69,6 +71,14 @@ function classNames(...classes) {
 
 const ContainerStore = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
+  const { products, productsStatus } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(getProductsLimit(12));
+  }, [dispatch]);
 
   return (
     <main className="container-store mb-40">
@@ -324,7 +334,7 @@ const ContainerStore = () => {
 
                 {/* Product grid */}
                 <div className="lg:col-span-3  w-full h-[100vh]">
-                  <ListProducts />
+                  <ListProducts products={products} />
                 </div>
               </div>
             </section>

@@ -13,13 +13,25 @@ const settings = {
 
   responsive: [
     {
-      breakpoint: 1024,
+      breakpoint: 1200, // Pantallas grandes (desktop)
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 992, // Tablets
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 768, // Celulares
       settings: {
         slidesToShow: 2,
       },
     },
     {
-      breakpoint: 768,
+      breakpoint: 480, // Celulares pequeños
       settings: {
         slidesToShow: 1,
       },
@@ -115,8 +127,6 @@ const products = [
     imageAlt: "TODO",
     href: "#",
   },
-  
-  
 ];
 
 // eslint-disable-next-line react/prop-types

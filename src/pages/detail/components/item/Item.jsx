@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../../../../redux/states/cart/cartSlice";
 import { Disclosure, RadioGroup, Tab } from "@headlessui/react";
@@ -91,7 +91,11 @@ const product = {
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-function Item() {
+// eslint-disable-next-line react/prop-types
+function Item({ products }) {
+  // eslint-disable-next-line react/prop-types
+  const { title, price, description, image, rating, id } = products;
+
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const dispatch = useDispatch();
 
@@ -108,6 +112,9 @@ function Item() {
     setSelectedQuantity(newValue);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="bg-white w-full ">
       <div className="mx-auto max-w-2xl  pt-16 pb-5   lg:max-w-[90%]  ">
@@ -161,13 +168,14 @@ function Item() {
           {/* Product info */}
           <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              {product.name}
+              {title}
             </h1>
 
             <div className="mt-3">
               <h2 className="sr-only">Product information</h2>
               <p className="text-3xl tracking-tight text-gray-900">
-                {product.price}
+                <span>$$ </span>
+                {price}
               </p>
             </div>
 
@@ -198,7 +206,7 @@ function Item() {
 
               <div
                 className="space-y-3 text-base text-gray-700"
-                dangerouslySetInnerHTML={{ __html: product.description }}
+                dangerouslySetInnerHTML={{ __html: description }}
               />
             </div>
 
